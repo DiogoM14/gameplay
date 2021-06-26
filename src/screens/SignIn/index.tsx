@@ -1,19 +1,21 @@
 import React from 'react'
-import { View, Text, Image, StatusBar } from 'react-native'
+import { View, Text, Image } from 'react-native'
 
 import { styles } from './styles'
 
 import IllustrationImg from '../../assets/illustration.png'
 import { ButtonIcon } from '../../components/ButtonIcon'
+import { useNavigation } from '@react-navigation/native'
 
 export function SignIn() {
+  const { navigate } = useNavigation()
+
+  function handleSignIn() {
+    navigate('Home')
+  }
+
   return (
     <View style={styles.container}>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor="transparent"
-        translucent
-      />
       <Image 
         source={IllustrationImg} 
         style={styles.image} 
@@ -32,7 +34,10 @@ export function SignIn() {
           favoritos com seus amigos
         </Text>
 
-        <ButtonIcon title="Entrar com Discord" />
+        <ButtonIcon 
+          title="Entrar com Discord" 
+          onPress={handleSignIn} 
+        />
       </View>
     </View>
   )
